@@ -1,0 +1,54 @@
+.artist-full {
+    .artist-full__jumbo {
+        height: 400px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .backdrop {
+            background-color: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+        .backdrop__content {
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 40px;
+        }
+        /deep/ .popularity-badge {
+            margin: 20px;
+        }
+        h1 {
+            color: #fff;
+            font-size: 5em;
+        }
+    }
+    .artist-full__tracks {
+        background: #333;
+        padding: 40px;
+        h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        /deep/ .tracklist {
+            background: #666;
+            color: #fff;
+            .tracklist__track {
+                border-bottom: 1px solid #333;
+            }
+            .tracklist__track-album, .tracklist__track-duration {
+                color: #aaa;
+            }
+        }
+    }
+}

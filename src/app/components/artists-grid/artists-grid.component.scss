@@ -1,0 +1,34 @@
+.artists-grid {
+    display: flex;
+    flex-wrap: wrap;
+    .artists-grid__artist {
+        flex: 1;
+        min-width: 300px;
+        min-height: 300px;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        .backdrop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            transition: all linear .1s;
+        }
+        h2 {
+            z-index: 150;
+            color: #fff;
+        }
+        &:hover {
+            .backdrop {
+                background: rgba(250, 210, 221,0.3);
+            }
+        }
+    }
+}

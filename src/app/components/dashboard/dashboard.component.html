@@ -1,0 +1,16 @@
+<music-header></music-header>
+<div class="container-fluid dashboard-container">
+  <div class="row h-100">
+    <div class="col col-3 p-0 dashboard-sidebar h-100">
+      <music-tracklist [currentPlayingTrackSrc]="currentPlayingTrackSrc | async" (onClickOnTrack)="onClickOnTrack($event)" [tracks]="userTopTracks | async"></music-tracklist>
+    </div>
+    <div class="col-9 p-0 dashboard-content h-100">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<music-player 
+  [reproducingState]="playerReproducingState | async" 
+  (onClickOnResume)="onClickOnResume()"
+  (onClickOnPause)="onClickOnPause()">
+</music-player>

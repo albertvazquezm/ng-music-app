@@ -1,0 +1,6 @@
+<div class="artists-grid">
+  <div class="artists-grid__artist" (click)="onClickOnArtist(artist.id)" *ngFor="let artist of artists" [style.background-image]="'url(' + artist.images[0]?.url + ')'">
+    <div class="backdrop"></div>
+    <h2>{{artist.name}}</h2>
+  </div>
+</div>

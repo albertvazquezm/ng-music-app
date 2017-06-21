@@ -1,0 +1,12 @@
+<button 
+  *ngIf="reproducingState !== PlayerReproducingState.None" 
+  (click)="onClickOnPlayerButton()" 
+  [ngClass]="{
+    'player-button--playing': reproducingState === PlayerReproducingState.Playing
+  }" 
+  class="player-button justify-content-center align-items-center d-flex">
+  <ng-container [ngSwitch]="reproducingState">
+    <i *ngSwitchCase="PlayerReproducingState.Paused" class="material-icons">play_arrow</i>
+    <i *ngSwitchCase="PlayerReproducingState.Playing" class="material-icons">pause</i>
+  </ng-container>
+</button>

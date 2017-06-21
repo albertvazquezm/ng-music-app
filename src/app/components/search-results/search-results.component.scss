@@ -1,0 +1,28 @@
+.search-results {
+    padding: 40px;
+    background: #333;
+    color: #fff;
+    .title {
+        font-size: 3em;
+        margin: 0 0 40px 0;
+    }
+    .subtitle {
+        margin: 20px 0;
+    }
+    /deep/ .tracklist {
+        // TODO: Styling repeated
+        background: #666;
+        .tracklist__track {
+            border-bottom: 1px solid #333;
+        }
+        .tracklist__track-album {
+            color: #aaa;
+        } 
+    }
+    /deep/ .artists-grid {
+        .artists-grid__artist {
+            min-width: 200px !important;
+            min-height: 200px !important;
+        }
+    }
+}

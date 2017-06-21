@@ -1,0 +1,9 @@
+.dashboard-container {
+    height: calc(100% - 50px);
+    .dashboard-sidebar {
+        overflow: scroll;
+    }    
+    .dashboard-content {
+        overflow: scroll;
+    }
+}

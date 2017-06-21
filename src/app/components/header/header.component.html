@@ -1,0 +1,13 @@
+<header>
+  <div class="container-fluid w-100">
+    <div class="row w-100">
+      <div class="col col-3 p-0 justify-content-center d-flex align-items-center">
+        <a [routerLink]="['/']"><h1>Music</h1></a>
+      </div>
+      <div class="col d-flex align-items-center">
+          <i class="material-icons">search</i>
+          <input [ngModel]="searchInputModel" (ngModelChange)="onSearchInputModelChange($event)" class="search-input" type="search"/>
+      </div>
+    </div>
+  </div>
+</header>

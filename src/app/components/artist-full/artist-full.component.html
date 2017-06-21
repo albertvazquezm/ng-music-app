@@ -1,0 +1,12 @@
+<div *ngIf="artist" class="artist-full">
+  <div class="artist-full__jumbo" [style.background-image]="'url(' + artist.images[0].url + ')'">
+    <div class="backdrop"></div>
+    <div class="backdrop__content">
+        <h1>{{artist.name}}</h1>
+    </div>
+  </div>
+  <div class="artist-full__tracks">
+    <h2>Top 10</h2>
+    <music-tracklist [currentPlayingTrackSrc]="currentPlayingTrackSrc | async" [tracks]="artistTopTracks" (onClickOnTrack)="onClickOnTrack($event)"></music-tracklist>
+  </div>
+</div>
