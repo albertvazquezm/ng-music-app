@@ -1,8 +1,7 @@
-import { TrackComponent } from './../track/track.component';
 import {BaseRequestOptions, Http, HttpModule} from '@angular/http';
 import { DurationPipe } from './../../pipes/duration.pipe';
-import { TracklistComponent } from './../tracklist/tracklist.component';
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import { TracklistDumbComponent } from './../tracklist/tracklist.component';
+import { async, ComponentFixture, inject, TestBed, fakeAsync, getTestBed } from '@angular/core/testing';
 import * as Rx from 'rxjs';
 import { MockBackend } from '@angular/http/testing';
 import { ArtistFullSmartComponent } from './artist-full.component';
@@ -15,16 +14,16 @@ import {IPlayerState} from '../../state/player/iPlayerState';
 import {playerReducer} from '../../state/player/player.reducer';
 import {searchReducer} from '../../state/search/search.reducer';
 import {PlayerActions} from '../../state/player/player.actions';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ArtistFullSmartComponent', () => {
+fdescribe('ArtistFullSmartComponent', () => {
   let component: ArtistFullSmartComponent;
   let fixture: ComponentFixture<ArtistFullSmartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        TracklistComponent,
-        TrackComponent,
+        TracklistDumbComponent,
         ArtistFullSmartComponent,
         DurationPipe
       ],
@@ -34,23 +33,12 @@ describe('ArtistFullSmartComponent', () => {
           player: playerReducer,
           search: searchReducer
         }),
-        /*ReactiveFormsModule,
-        RouterTestingModule.withRoutes(routes),
-        BrowserModule,
-        StoreModule.provideStore({
-          player: playerReducer,
-          search: searchReducer
-        }),
-        StoreDevtoolsModule.instrumentOnlyWithExtension({
-          maxAge: 500
-        }),
-        EffectsModule.run(PlayerEffects),
-        EffectsModule.run(SearchEffects)*/
+        RouterTestingModule
       ],
       providers: [
         {
           provide: ArtistSpotifyApiService,
-          useValue: ArtistSpotifyApiServiceStub
+          useClass: ArtistSpotifyApiServiceStub
         },
         {
           provide: ActivatedRoute,
@@ -66,36 +54,45 @@ describe('ArtistFullSmartComponent', () => {
             return new Http(backendInstance, defaultOptions);
           },
           deps: [MockBackend, BaseRequestOptions]
-        },
-        // Global services
-        /*AuthenticationService,
-        PlayerService,
-
-        // Guards
-        SpotifyAuthenticationRedirectGuard,
-        SpotifyAuthenticationValidGuard,
-
-        // Constants
-        ApplicationConstants,
-        SpotifyApiConstants,
-
-        // API
-        SpotifyHttpService,
-        PersonalizationSpotifyApiService,
-        ArtistSpotifyApiService,
-        SearchSpotifyApiService*/
+        }
       ]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  it('should be created', () => {
     fixture = TestBed.createComponent(ArtistFullSmartComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    expect(component).toBeTruthy();
   });
 
-  it('should be created', () => {
-    expect(component).toBeTruthy();
+  it('should get the proper artist using the id from URL', () => {
+    inject([ArtistSpotifyApiService], fakeAsync((mockArtistSpotifyApiService: ArtistSpotifyApiService) => {
+      spyOn(mockArtistSpotifyApiService, 'getArtist');
+      fixture = TestBed.createComponent(ArtistFullSmartComponent);
+      component = fixture.componentInstance;
+      component.ngOnInit();
+      expect(mockArtistSpotifyApiService.getArtist).toHaveBeenCalledWith(8898);
+    }));
+  });
+
+  it('should get the artist top tracks list', () => {
+    inject([ArtistSpotifyApiService], fakeAsync((mockArtistSpotifyApiService: ArtistSpotifyApiService) => {
+      spyOn(mockArtistSpotifyApiService, 'getArtistTopTracks');
+      fixture = TestBed.createComponent(ArtistFullSmartComponent);
+      component = fixture.componentInstance;
+      component.ngOnInit();
+      expect(mockArtistSpotifyApiService.getArtistTopTracks).toHaveBeenCalledWith(8898);
+    }));
+  });
+
+  it('should render the artist name', () => {
+      fixture = TestBed.createComponent(ArtistFullSmartComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+      const element = fixture.nativeElement;
+      fixture.whenStable().then(() => {
+        expect(element.querySelector('h1').innerText).toBe('Band of Horses');
+      });
   });
 });

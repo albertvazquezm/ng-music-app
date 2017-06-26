@@ -34,6 +34,7 @@ export class ArtistFullSmartComponent implements OnInit {
     this._artistSpotifyApiService.getArtistTopTracks(artistId).map((r: TrackListResponse) => r.tracks).subscribe((tracks: Track[]) => {
       this.artistTopTracks = tracks;
     });
+    // TODO: select instead of mapping
     this.currentPlayingTrackSrc = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.src);
   }
 
