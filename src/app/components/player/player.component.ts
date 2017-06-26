@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent {
+export class PlayerDumbComponent {
 
   @Input() reproducingState: PlayerReproducingState;
   @Output() onClickOnResume = new EventEmitter();

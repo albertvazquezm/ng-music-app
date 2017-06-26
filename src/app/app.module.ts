@@ -21,17 +21,16 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HeaderComponent } from './components/header/header.component';
-import { TracklistComponent } from './components/tracklist/tracklist.component';
-import { TrackComponent } from './components/track/track.component';
+import { LoginSmartComponent } from './components/login/login.component';
+import { DashboardSmartComponent } from './components/dashboard/dashboard.component';
+import { HeaderSmartComponent } from './components/header/header.component';
+import { TracklistDumbComponent } from './components/tracklist/tracklist.component';
 
 import 'rxjs/Rx';
-import { ArtistsGridComponent } from './components/artists-grid/artists-grid.component';
-import { UserTopArtistsGridComponent } from './components/user-top-artists-grid/user-top-artists-grid.component';
+import { ArtistsGridDumbComponent } from './components/artists-grid/artists-grid.component';
+import { UserTopArtistsGridSmartComponent } from './components/user-top-artists-grid/user-top-artists-grid.component';
 import { ArtistFullSmartComponent } from './components/artist-full/artist-full.component';
-import { PlayerComponent } from './components/player/player.component';
+import { PlayerDumbComponent } from './components/player/player.component';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -42,16 +41,15 @@ import { PlayerReproducingState } from './state/player/playerReproducingState';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    DashboardComponent,
-    HeaderComponent,
-    TracklistComponent,
-    TrackComponent,
-    ArtistsGridComponent,
-    UserTopArtistsGridComponent,
+    LoginSmartComponent,
+    DashboardSmartComponent,
+    HeaderSmartComponent,
+    TracklistDumbComponent,
+    ArtistsGridDumbComponent,
+    UserTopArtistsGridSmartComponent,
     ArtistFullSmartComponent,
     DurationPipe,
-    PlayerComponent,
+    PlayerDumbComponent,
     SearchResultsSmartComponent,
   ],
   imports: [

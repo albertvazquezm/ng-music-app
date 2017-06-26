@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './tracklist.component.html',
   styleUrls: ['./tracklist.component.scss']
 })
-export class TracklistComponent {
+export class TracklistDumbComponent {
 
   @Input() tracks: Track[];
   @Input() currentPlayingTrackSrc: string;

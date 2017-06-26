@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {  NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { DashboardComponent } from './dashboard.component';
+import { DashboardSmartComponent } from './dashboard.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('DashboardSmartComponent', () => {
+  let component: DashboardSmartComponent;
+  let fixture: ComponentFixture<DashboardSmartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ],
+      declarations: [ DashboardSmartComponent ],
       schemas:      [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(DashboardSmartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

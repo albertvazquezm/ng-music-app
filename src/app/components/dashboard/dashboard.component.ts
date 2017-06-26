@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardSmartComponent {
 
   public userTopTracks: Rx.Observable<Track[]> = this._personalizationSpotifyApiService.getUserTopTracks().map(response => response.items);
   public playerReproducingState: Rx.Observable<PlayerReproducingState>;

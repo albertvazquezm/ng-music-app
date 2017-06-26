@@ -7,7 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginSmartComponent {
 
   constructor(
     private _authenticationService: AuthenticationService

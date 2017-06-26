@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TracklistComponent } from './tracklist.component';
+import { TracklistDumbComponent } from './tracklist.component';
 
-describe('TracklistComponent', () => {
-  let component: TracklistComponent;
-  let fixture: ComponentFixture<TracklistComponent>;
+describe('TracklistDumbComponent', () => {
+  let component: TracklistDumbComponent;
+  let fixture: ComponentFixture<TracklistDumbComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TracklistComponent ]
+      declarations: [ TracklistDumbComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TracklistComponent);
+    fixture = TestBed.createComponent(TracklistDumbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

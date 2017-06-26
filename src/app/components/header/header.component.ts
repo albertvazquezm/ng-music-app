@@ -10,7 +10,7 @@ import * as Rx from 'rxjs';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderSmartComponent implements OnInit {
 
   public searchInputModel: string;
   public searchQuery: Rx.Observable<string>;

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserTopArtistsGridComponent } from './user-top-artists-grid.component';
+import { UserTopArtistsGridSmartComponent } from './user-top-artists-grid.component';
 
-describe('UserTopArtistsGridComponent', () => {
-  let component: UserTopArtistsGridComponent;
-  let fixture: ComponentFixture<UserTopArtistsGridComponent>;
+describe('UserTopArtistsGridSmartComponent', () => {
+  let component: UserTopArtistsGridSmartComponent;
+  let fixture: ComponentFixture<UserTopArtistsGridSmartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserTopArtistsGridComponent ]
+      declarations: [ UserTopArtistsGridSmartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserTopArtistsGridComponent);
+    fixture = TestBed.createComponent(UserTopArtistsGridSmartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
