@@ -1,10 +1,10 @@
 import { PlayerService } from './../../services/player/player.service';
 import { Action } from '@ngrx/store';
-import { PlayerPlayActionType, PlayerPauseActionType, PlayerResumeActionType } from './player.actions';
+import { PlayerPlayActionType, PlayerPauseActionType, PlayerResumeActionType, PlayerActions } from './player.actions';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Actions, Effect } from '@ngrx/effects';
-import { Observable } from 'rxjs/Observable';
+import * as Rx from 'rxjs';
 
 @Injectable()
 export class PlayerEffects {
@@ -14,15 +14,14 @@ export class PlayerEffects {
     private _playerService: PlayerService
   ) {}
 
-  @Effect({dispatch: false}) playerPlayAction  = this.actions
+  @Effect() playerPlayAction  = this.actions
       .ofType(PlayerPlayActionType)
-      .do(({payload}: Action) => {
-        payload.src && this._playerService.play(payload.src);
-      })
+      .switchMap(({payload}: Action) => 
+        this._playerService.play(payload.preview_url).map(() => PlayerActions.pause()));
 
     @Effect({dispatch: false}) playerStopAction  = this.actions
       .ofType(PlayerPauseActionType)
-      .do(({payload}: Action) => {
+      .do(() => {
         this._playerService.pause();
       })
 

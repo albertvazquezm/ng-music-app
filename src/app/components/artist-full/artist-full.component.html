@@ -7,6 +7,6 @@
   </div>
   <div class="artist-full__tracks">
     <h2>Top 10</h2>
-    <music-tracklist [currentPlayingTrackSrc]="currentPlayingTrackSrc | async" [tracks]="artistTopTracks" (onClickOnTrack)="onClickOnTrack($event)"></music-tracklist>
+    <music-tracklist [currentPlayingTrackId]="currentPlayingTrackId | async" [tracks]="artistTopTracks" (onClickOnTrack)="onClickOnTrack($event)"></music-tracklist>
   </div>
 </div>

@@ -21,7 +21,7 @@ export class SearchResultsSmartComponent {
   public tracks: Track[];
   public artists: Artist[];
   public query: string;
-  public currentPlayingTrackSrc: Rx.Observable<string>;
+  public currentPlayingTrackId: Rx.Observable<string>;
 
   private _searchQueryHttpRequest: Rx.Subscription;
 
@@ -34,11 +34,11 @@ export class SearchResultsSmartComponent {
   }
 
   ngOnInit() {
-      this.currentPlayingTrackSrc = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.src);
+      this.currentPlayingTrackId = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.id);
   }
 
   public onClickOnTrack(track: Track) {
-    this._playerStore.dispatch(PlayerActions.play(track.preview_url));
+    this._playerStore.dispatch(PlayerActions.play(track));
   }
 
   private _onQueryChanged(query: string) {

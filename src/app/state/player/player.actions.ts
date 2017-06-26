@@ -1,3 +1,4 @@
+import { Track } from './../../entities/spotify/track';
 import { Action } from '@ngrx/store';
 import * as uuid from 'uuid';
 
@@ -6,12 +7,10 @@ export const PlayerPauseActionType = uuid.v4();
 export const PlayerResumeActionType = uuid.v4();
 
 export class PlayerActions {
-    static play(src: string): Action {
+    static play(track: Track): Action {
         return {
             type: PlayerPlayActionType,
-            payload: {
-                src
-            }
+            payload: track
         }
     }
     static pause(): Action {
