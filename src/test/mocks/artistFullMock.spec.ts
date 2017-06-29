@@ -16,7 +16,7 @@ export const artistFullMock = {
   }, {
     "height" : 522,
     "url" : "https://i.scdn.co/image/2f91c3cace3c5a6a48f3d0e2fd21364d4911b332",
-    "width" : 640
+    "width" : 640,
   }, {
     "height" : 163,
     "url" : "https://i.scdn.co/image/2efc93d7ee88435116093274980f04ebceb7b527",
