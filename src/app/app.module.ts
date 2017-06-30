@@ -1,3 +1,4 @@
+import { StorageService } from './services/storage/storage.service';
 import { SearchSpotifyApiService } from './services/spotify/search.api.service';
 import { SearchEffects } from './state/search/search.effects';
 import { searchReducer } from './state/search/search.reducer';
@@ -72,6 +73,7 @@ import { PlayerReproducingState } from './state/player/playerReproducingState';
     // Global services
     AuthenticationService,
     PlayerService,
+    StorageService,
 
     // Guards
     SpotifyAuthenticationRedirectGuard,
