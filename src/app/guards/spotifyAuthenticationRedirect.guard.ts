@@ -11,7 +11,7 @@ export class SpotifyAuthenticationRedirectGuard implements CanActivate {
     ) {}
     public canActivate(route: ActivatedRouteSnapshot) {
         const spotifyRedirectParams = QueryString.parse(route.fragment);
-        if(spotifyRedirectParams.access_token) {
+        if (spotifyRedirectParams.access_token) {
             this._authenticationService.onAuthenticateUsingSpotifySuccess({
                 access_token: spotifyRedirectParams.access_token,
                 expires_in: spotifyRedirectParams.expires_in,
