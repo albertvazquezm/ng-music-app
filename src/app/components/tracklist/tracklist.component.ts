@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class TracklistDumbComponent {
 
   @Input() tracks: Track[];
-  @Input() currentPlayingTrackSrc: string;
+  @Input() currentPlayingTrackId: string;
   @Output('onClickOnTrack') _onClickOnTrack = new EventEmitter<Track>();
 
   public onClickOnTrack(track: Track) {

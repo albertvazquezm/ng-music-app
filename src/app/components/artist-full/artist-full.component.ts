@@ -18,7 +18,7 @@ export class ArtistFullSmartComponent implements OnInit {
 
   public artist: Artist;
   public artistTopTracks: Track[];
-  public currentPlayingTrackSrc: Rx.Observable<string>;
+  public currentPlayingTrackId: Rx.Observable<string>;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -34,11 +34,10 @@ export class ArtistFullSmartComponent implements OnInit {
     this._artistSpotifyApiService.getArtistTopTracks(artistId).map((r: TrackListResponse) => r.tracks).subscribe((tracks: Track[]) => {
       this.artistTopTracks = tracks;
     });
-    // TODO: select instead of mapping
-    this.currentPlayingTrackSrc = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.src);
+    this.currentPlayingTrackId = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.id);
   }
 
   public onClickOnTrack(track: Track) {
-    this._playerStore.dispatch(PlayerActions.play(track.preview_url));
+    this._playerStore.dispatch(PlayerActions.play(track));
   }
 }

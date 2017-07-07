@@ -2,7 +2,7 @@
   <h1 class="title">Search results</h1>
 
   <h2 class="subtitle">Tracks</h2>
-  <music-tracklist [currentPlayingTrackSrc]="currentPlayingTrackSrc | async" (onClickOnTrack)="onClickOnTrack($event)" [tracks]="tracks"></music-tracklist>
+  <music-tracklist [currentPlayingTrackId]="currentPlayingTrackId | async" (onClickOnTrack)="onClickOnTrack($event)" [tracks]="tracks"></music-tracklist>
 
   <h2 class="subtitle">Artists</h2>
   <music-artists-grid [artists]="artists"></music-artists-grid>

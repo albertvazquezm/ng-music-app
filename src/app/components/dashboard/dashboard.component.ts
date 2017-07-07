@@ -16,22 +16,22 @@ export class DashboardSmartComponent {
 
   public userTopTracks: Rx.Observable<Track[]> = this._personalizationSpotifyApiService.getUserTopTracks().map(response => response.items);
   public playerReproducingState: Rx.Observable<PlayerReproducingState>;
-  public currentPlayingTrackSrc: Rx.Observable<string>;
+  public currentPlayingTrackId: Rx.Observable<string>;
 
   constructor(
     private _personalizationSpotifyApiService: PersonalizationSpotifyApiService,
     private _playerStore: Store<any>
   ) {
     // TODO: Try to make it work using select
-    this.playerReproducingState = this._playerStore.map((s) => s.player && s.player.reproducingState);
+    this.playerReproducingState = this._playerStore.map(s => s.player && s.player.reproducingState);
+    this.currentPlayingTrackId = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.id);
   }
 
   ngOnInit() {
-      this.currentPlayingTrackSrc = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.src);
   }
 
   public onClickOnTrack(track: Track) {
-    this._playerStore.dispatch(PlayerActions.play(track.preview_url));
+    this._playerStore.dispatch(PlayerActions.play(track));
   }
 
   public onClickOnResume() {

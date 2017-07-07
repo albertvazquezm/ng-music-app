@@ -1,5 +1,5 @@
 <ul class="tracklist">
-  <li class="tracklist__track" [ngClass]="{'tracklist__track--playing': (currentPlayingTrackSrc && currentPlayingTrackSrc === track.preview_url)}" (click)="onClickOnTrack(track)" *ngFor="let track of tracks">
+  <li class="tracklist__track" [ngClass]="{'tracklist__track--playing': (currentPlayingTrackId && currentPlayingTrackId === track.id)}" (click)="onClickOnTrack(track)" *ngFor="let track of tracks">
     {{track.name}} - 
     <span class="tracklist__track-album">{{track.album.name}}</span>
     <span class="tracklist__duration">{{track.duration_ms | duration}}</span>
