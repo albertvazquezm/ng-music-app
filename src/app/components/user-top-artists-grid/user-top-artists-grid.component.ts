@@ -10,10 +10,13 @@ import * as Rx from 'rxjs';
 })
 export class UserTopArtistsGridSmartComponent {
 
+  public userTopArtists: Rx.Observable<Artist[]>;
+
   constructor(
     private _personalizationSpotifyApiService: PersonalizationSpotifyApiService
   ){}
 
-  public userTopArtists: Rx.Observable<Artist[]> = this._personalizationSpotifyApiService.getUserTopArtists().map((response: ListResponse<Artist>) => response.items);
-
+  ngOnInit() {
+    this.userTopArtists = this._personalizationSpotifyApiService.getUserTopArtists().map((response: ListResponse<Artist>) => response.items);
+  }
 }

@@ -27,7 +27,6 @@ import { DashboardSmartComponent } from './components/dashboard/dashboard.compon
 import { HeaderSmartComponent } from './components/header/header.component';
 import { TracklistDumbComponent } from './components/tracklist/tracklist.component';
 
-import 'rxjs/Rx';
 import { ArtistsGridDumbComponent } from './components/artists-grid/artists-grid.component';
 import { UserTopArtistsGridSmartComponent } from './components/user-top-artists-grid/user-top-artists-grid.component';
 import { ArtistFullSmartComponent } from './components/artist-full/artist-full.component';
@@ -38,6 +37,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { SearchResultsSmartComponent } from './components/search-results/search-results.component';
 import { PlayerReproducingState } from './state/player/playerReproducingState';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -59,15 +60,14 @@ import { PlayerReproducingState } from './state/player/playerReproducingState';
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     BrowserModule,
-    StoreModule.provideStore({
+    StoreModule.forRoot({
       player: playerReducer,
       search: searchReducer
     }),
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
-      maxAge: 500
-    }),
-    EffectsModule.run(PlayerEffects),
-    EffectsModule.run(SearchEffects)
+    !environment.production ? StoreDevtoolsModule.instrument({
+      maxAge: 50
+    }) : [],
+    EffectsModule.forRoot([PlayerEffects, SearchEffects]),
   ],
   providers: [
     // Global services

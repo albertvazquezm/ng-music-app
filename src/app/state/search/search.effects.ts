@@ -4,6 +4,7 @@ import { SearchSetQueryActionType } from './search.actions';
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
+import { ActionWithPayload } from '../ActionWithPayload';
 
 @Injectable()
 export class SearchEffects {
@@ -15,10 +16,10 @@ export class SearchEffects {
 
   @Effect({dispatch: false}) searchSetQueryAction  = this.actions
       .ofType(SearchSetQueryActionType)
-      .do(({payload}: Action) => {
+      .do(({payload}: ActionWithPayload<string>) => {
         this._router.navigate(['search'], {
             queryParams: {
-                q: payload.query
+                q: payload
             }
         })
       })

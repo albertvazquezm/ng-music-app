@@ -10,7 +10,7 @@ import {ArtistSpotifyApiService} from '../../services/spotify/artist.api.service
 import {ArtistSpotifyApiServiceStub} from '../../../test/stubs/artistSpotifyApiServiceStub';
 import {Store, StoreModule} from '@ngrx/store';
 import {StoreMock} from '../../../test/mocks/storeMock';
-import {IPlayerState} from '../../state/player/iPlayerState';
+import {PlayerState} from '../../state/player/PlayerState';
 import {playerReducer} from '../../state/player/player.reducer';
 import {searchReducer} from '../../state/search/search.reducer';
 import {PlayerActions} from '../../state/player/player.actions';

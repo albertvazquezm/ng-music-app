@@ -6,7 +6,7 @@
       </div>
       <div class="col d-flex align-items-center">
           <i class="material-icons">search</i>
-          <input [ngModel]="searchInputModel" (ngModelChange)="onSearchInputModelChange($event)" class="search-input" type="search"/>
+          <input #searchInput (keyup)="onSearchInputModelChange(searchInput.value)" class="search-input" type="search"/>
       </div>
     </div>
   </div>

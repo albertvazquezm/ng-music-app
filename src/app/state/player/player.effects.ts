@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Actions, Effect } from '@ngrx/effects';
 import * as Rx from 'rxjs';
+import { ActionWithPayload } from '../ActionWithPayload';
+import { Track } from '../../entities/spotify/track';
 
 @Injectable()
 export class PlayerEffects {
@@ -16,7 +18,7 @@ export class PlayerEffects {
 
   @Effect() playerPlayAction  = this.actions
       .ofType(PlayerPlayActionType)
-      .switchMap(({payload}: Action) => 
+      .switchMap(({payload}: ActionWithPayload<Track>) => 
         this._playerService.play(payload.preview_url).map(() => PlayerActions.pause()));
 
     @Effect({dispatch: false}) playerStopAction  = this.actions

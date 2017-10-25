@@ -1,16 +1,16 @@
 import { SearchSetQueryActionType } from './search.actions';
-import { ISearchState } from './iSearchState';
-import { Action } from '@ngrx/store';
+import { SearchState } from './SearchState';
+import { ActionWithPayload } from '../ActionWithPayload';
 
-const initialState: ISearchState = {
+const initialState: SearchState = {
     query: ''
 };
 
-export function searchReducer (state = initialState, action: Action) {
+export function searchReducer (state = initialState, action: ActionWithPayload<string>) {
     switch (action.type) {
         case SearchSetQueryActionType:
             return Object.assign(state, {
-                query: action.payload.query
+                query: action.payload
             });
         default: return state;
     }

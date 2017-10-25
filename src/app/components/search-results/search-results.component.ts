@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { PlayerActions } from './../../state/player/player.actions';
-import { IPlayerState } from './../../state/player/iPlayerState';
+import { PlayerState } from './../../state/player/PlayerState';
 import { Store } from '@ngrx/store';
 import { Artist } from './../../entities/spotify/artist';
 import { Track } from './../../entities/spotify/track';
@@ -10,6 +10,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ItemType } from '../../services/spotify/itemType';
 import * as Rx from 'rxjs';
+
+const MIN_QUERY_LENGTH = 2;
 
 @Component({
   selector: 'app-search-results',
@@ -29,12 +31,11 @@ export class SearchResultsSmartComponent {
     private _activatedRoute: ActivatedRoute,
     private _searchSpotifyApiService: SearchSpotifyApiService,
     private _playerStore: Store<any>
-  ) {
-    this._activatedRoute.queryParamMap.map((params: ParamMap) => params.get('q')).subscribe((query) => this._onQueryChanged(query));
-  }
+  ) {}
 
   ngOnInit() {
-      this.currentPlayingTrackId = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.id);
+    this._activatedRoute.queryParamMap.map((params: ParamMap) => params.get('q')).subscribe((query) => this._onQueryChanged(query));
+    this.currentPlayingTrackId = this._playerStore.map(s => s.player).map((state: PlayerState) => state.id);
   }
 
   public onClickOnTrack(track: Track) {
@@ -43,7 +44,7 @@ export class SearchResultsSmartComponent {
 
   private _onQueryChanged(query: string) {
     this.query = query;
-    if (query.length > 2) {
+    if (query.length > MIN_QUERY_LENGTH) {
       this._guardAgainsMultipleSearchRequests();
       this._searchQueryHttpRequest = this._searchSpotifyApiService
         .search([ItemType.Track, ItemType.Artist], query, 10)

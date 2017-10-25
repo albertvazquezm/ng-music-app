@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { PlayerActions } from './../../state/player/player.actions';
-import { IPlayerState } from './../../state/player/iPlayerState';
+import { PlayerState } from './../../state/player/PlayerState';
 import { Store } from '@ngrx/store';
 import { TrackListResponse } from './../../entities/spotify/trackListResponse';
 import { Track } from './../../entities/spotify/track';
@@ -34,7 +34,7 @@ export class ArtistFullSmartComponent implements OnInit {
     this._artistSpotifyApiService.getArtistTopTracks(artistId).map((r: TrackListResponse) => r.tracks).subscribe((tracks: Track[]) => {
       this.artistTopTracks = tracks;
     });
-    this.currentPlayingTrackId = this._playerStore.map(s => s.player).map((state: IPlayerState) => state.id);
+    this.currentPlayingTrackId = this._playerStore.map(s => s.player).map((state: PlayerState) => state.id);
   }
 
   public onClickOnTrack(track: Track) {

@@ -1,4 +1,4 @@
-import { IPlayerState } from './../../state/player/iPlayerState';
+import { PlayerState } from './../../state/player/PlayerState';
 import { Store } from '@ngrx/store';
 import { PlayerReproducingState } from './../../state/player/playerReproducingState';
 import * as Rx from 'rxjs';

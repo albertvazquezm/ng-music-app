@@ -1,6 +1,6 @@
 import { PlayerReproducingState } from './playerReproducingState';
 
-export interface IPlayerState {
+export interface PlayerState {
     src: string;
     reproducingState: PlayerReproducingState;
     id: string;
